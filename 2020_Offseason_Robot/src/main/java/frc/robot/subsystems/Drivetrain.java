@@ -20,6 +20,6 @@ public class Drivetrain extends Subsystem{
     private VictorSP rightMotor2 = new VictorSP(3);
 
     public void driveLeftMotor1(double speedPerc) {
-        
+        leftMotor1.setSpeed(speedPerc);
     }
 }
