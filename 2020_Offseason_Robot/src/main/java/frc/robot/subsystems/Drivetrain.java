@@ -19,13 +19,49 @@ public class Drivetrain extends Subsystem {
   // here. Call these from Commands.
 
   private VictorSP leftMotor1 = new VictorSP(0);
-  private VictorSP leftmotor2 = new VictorSP(1);
+  private VictorSP leftMotor2 = new VictorSP(1);
   private VictorSP rightMotor1 = new VictorSP(2);
   private VictorSP rightMotor2 = new VictorSP(3);
 
   public void driveLeftMotor1(double speed)
   {
     leftMotor1.setSpeed(speed);
+  }
+
+  public void driveLeftMotor2(double speed)
+  {
+    leftMotor2.setSpeed(speed);
+  }
+
+  public void driveRightMotor1(double speed)
+  {
+    rightMotor1.setSpeed(speed);
+  }
+
+  public void driveRightMotor2(double speed)
+  {
+    rightMotor2.setSpeed(speed);
+  }
+
+  public void driveAllLeftMotors(double speed)
+  {
+    leftMotor1.setSpeed(speed);
+    leftMotor2.setSpeed(speed);
+  }
+
+  public void driveAllRightMotors(double speed)
+  {
+    rightMotor1.setSpeed(speed);
+    rightMotor2.setSpeed(speed);
+  }
+
+  public void driveAllDrivetrainMotors(double speed)
+  {
+    leftMotor1.setSpeed(speed);
+    leftMotor2.setSpeed(speed);
+    rightMotor1.setSpeed(speed);
+    rightMotor2.setSpeed(speed);
+
   }
 
   @Override
