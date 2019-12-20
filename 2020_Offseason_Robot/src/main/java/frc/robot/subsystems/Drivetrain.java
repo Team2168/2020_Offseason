@@ -14,10 +14,29 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class Drivetrain extends Subsystem {
-    private VictorSP leftMotor1 = new VictorSP(0);
-    private VictorSP leftMotor2 = new VictorSP(1);
-    private VictorSP rightMotor1 = new VictorSP(2);
-    private VictorSP rightMotor2 = new VictorSP(3);
+
+    private VictorSP leftMotor1;
+    private VictorSP leftMotor2;
+    private VictorSP rightMotor1;
+    private VictorSP rightMotor2;
+
+    private static Drivetrain _instance = null;
+
+    //private constructor
+    private Drivetrain() {
+        leftMotor1 = new VictorSP(0);
+        leftMotor2 = new VictorSP(1);
+        rightMotor1 = new VictorSP(2);
+        rightMotor2 = new VictorSP(3);
+    }
+
+    public static Drivetrain getInstance() {
+        if (_instance == null){
+            _instance = new Drivetrain();
+        }
+
+        return _instance;
+    }
 
     //next four functions allow you to set individual speeds for each motor
     public void driveLeftMotor1(double speed) {
@@ -42,10 +61,15 @@ public class Drivetrain extends Subsystem {
         driveRightMotor2(speed);
     }
 
-    public void driveAll(double speed) { //sets all motors to same speed
+    public void driveAllSame(double speed) { //sets all motors to same speed
         driveLeftMotor1(speed);
         driveLeftMotor2(speed);
         driveRightMotor1(speed);
         driveRightMotor2(speed);
+    }
+    
+    public void tankDrive(double leftSpeed, double rightSpeed) {
+        driveLeftSide(leftSpeed);
+        driveRightSide(rightSpeed);
     }
 }
